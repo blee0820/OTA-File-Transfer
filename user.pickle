@@ -1,0 +1,4 @@
+A generic .pickle file that holds admin inputted 
+information that is used to log into any other remote devices
+after the first one. It is destroyed upon program termination.
+Retained for visibility.
