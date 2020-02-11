@@ -1,4 +1,6 @@
 #!/bin/bash
+# In a working environment, thie file is dynamically created and then destroyed upon program termination.
+# Retained for visibility.
 
 transfer(){
 	mount - / - oremount,rw
