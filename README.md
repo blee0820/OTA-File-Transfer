@@ -37,7 +37,7 @@ python .\transfer.py
 
 **Notes:** 
 - This program was developed on Windows operating system. A Linux port is currently a work in process.
-- Certain lines of code are modified to omit sensitive information.
+- Certain lines of code are modified or renamed to mask sensitive information.
 - Due to the nature of this program being workspace-specific, a test run may not be successful in your own environment. Screenshots have been attached to demonstrate the workings of this program.
 
 ### <u>System Design</u>
@@ -50,6 +50,9 @@ Password decryption was handled using a very specific manner.
 3.  The **SCPClient()** module is used to transport files onto remote devies. This allows the transfer of individual files or entire directories from a local machine. If more than one file is required for transfer, instead of transferring each individual file one at a time, the entire directory is transferred. This directory is transferred onto the remote device on a temporary location which contains all files needed for a file copy. Once the copying process is complete, this folder is completely removed from the device before a graceful restart of the remote device.
 4.  A dynamically created bash script is created based on the admin's input of credentials and file information (file user, permission, and destination) which is used by the remote device to perform the necessary file copy process on the device and copy checks. If there are any service files that are copied over that need to be enabled on the remote device, the program dynamically searches for any service files and writes code on the bash script to enable those service files.
 5.  A requirement for this program was to be able perform the file transfer and copy process as automated as possible. If there are more than one remote devices requiring a file transfer, the admin should not need to perform any input actions after the first file transfer process. This was achieved using the **pickle** module. For instance, if there are 5 remote devices requiring a file transfer, on the first pass of the first remote device, the **pickle** module saves admin inputted information as a dictionary object as a .pickle file. The information saved on this .pickle file can then be accessed for later use. This was implemented to prevent the admin from having to enter in credentials on every remote device. After the file transfer on the first remote device is successful, it automatically goes onto the next remote device and begins the file transfer and copy process.
+
+### <u>Program Output Screenshots</u>
+
 
 ### <u>Acknowledgements</u>
 I would like to give thanks to my colleague KC for approaching me with the idea of implementing the idea of having a file transfer application in our workplace. It gave me great exposure to system design, inner workings of Python, and great modules that I otherwise would have not been exposed to. It was a great pleasure working on an application that serves practical use in the workplace to reduce labor, time, and resources, and I definitely see great potential in this program to be improved and expanded upon. It should be noted that an application of this purpose has yet to exist in our workplace in its lifetime so it is a great introduction of an application that can really be used to serve the future of the company. Also, hats off to KC for giving me assistance in implementing the sod_key module to work with my program. You're the man!
