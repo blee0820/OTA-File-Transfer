@@ -9,7 +9,6 @@ from decrypt_sod_key import sod_key_decrypt
 
 """
 Driver for decrypting the encrypted password retrieved from database.
-Utilizes Base64 encoding and PyNaCl module for Secret-Key encryption.
 """
 
 def cam_pw_decrypt(cam_id, cam_count):
