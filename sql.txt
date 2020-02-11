@@ -1,0 +1,1 @@
+SELECT cd.cam_ID, ip, ci.cam_pass, DATE_FORMAT(MAX(timestamp), '%m/%d/%Y %T') FROM cam_diagnostics cd JOIN cellular_info ci ON cd.cam_ID = ci.cam_ID WHERE cd.cam_ID = %s GROUP BY cam_ID ORDER BY timestamp DESC

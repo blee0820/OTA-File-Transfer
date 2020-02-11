@@ -1,0 +1,3 @@
+chmod +x /tmp-folder/bash-scripts/*.sh
+sed -i 's/\r$//' /tmp-folder/bash-scripts/transfer.sh
+(cd /tmp-folder/bash-scripts && ./transfer.sh)
