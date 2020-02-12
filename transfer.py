@@ -13,29 +13,29 @@ from parse_commands import parse_commands
 from scp import SCPClient
 
 """
-Main driver for transferring files from local machine to camera(s).
+Main driver for transferring files from local machine to remote device(s).
 
-The purpose of this program is to transfer new files onto camera(s) from a local host machine.
+The purpose of this program is to transfer new files onto remote device(s) from a local host machine.
 
-The program retrieves necessary information to successfully SSH into camera(s) and
+The program retrieves necessary information to successfully SSH into remote device(s) and
 based on user's input of file's user, permission, and directory to be placed in,
-generates a bash script that gets transferred onto the camera along with
-the files that need to be transferred. Multiple cameras can be identified to have files transferred
+generates a bash script that gets transferred onto the remote device along with
+the files that need to be transferred. Multiple remote devices can be identified to have files transferred
 into them.
 
 A .pickle file is generated which saves user inputted data as a dictionary. These .pickle files are
 saved temporarily on user's local machine. 
 
 If there is only one camera needing a file transfer, it will always ask for the user input where
-necessary. If there is more than one camera, it will take the updated .pickle file from the first camera's
+necessary. If there is more than one camera, it will take the updated .pickle file from the first remote device's
 file transfer procedure and use data to populate any entries requiring user input. This eliminates the need
-to have the user constantly inputting values where necessary after the first camera has passed its file transfer
-procedure and automates the process on all other cameras.
+to have the user constantly inputting values where necessary after the first remote device has passed its file transfer
+procedure and automates the process on all other remote devices.
  
-Once the bash script is on the camera, it executes and starts the transfer process, gracefully rebooting
-each camera as the file process is complete.
+Once the bash script is on the remote device, it executes and starts the transfer process, gracefully rebooting
+each remote device as the file process is complete.
 
-After all cameras have successfully completed their file transfer processes, the main driver program will
+After all remote devices have successfully completed their file transfer processes, the main driver program will
 remove any generated .pickle files along with the generated bash script.
 
 A bash script was created to be dynamically populated and transferred over due to the complexity and
@@ -134,7 +134,7 @@ class Transfer:
             print("Terminating transfer process.")
             print(ki)
   
-    def camera_SSH(self):
+    def device_SSH(self):
         try:
             print("")
             print("*** Starting Transfer for", self.cam_id,"***")
@@ -240,7 +240,7 @@ if __name__ == '__main__':
     
     for cam_count, cam in enumerate(cam_id, 1):        
         start_transfer = Transfer(cam, cam_count)
-        start_transfer.camera_SSH()
+        start_transfer.device_SSH()
     os.remove('auth_key.pickle')
     os.remove('user.pickle')
     os.remove('bash-scripts/transfer.sh')
