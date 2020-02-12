@@ -1,5 +1,7 @@
 A generic .pickle file that holds the key used to
 decrypt encrypted passwords that will be used
-on remote devices after the first one.
+on remote devices after the first one. In a working 
+environment, this .pickle file will hold information
+regarding the key used to decrypt passwords.
 It is destroyed upon program termination.
 Retained for visibility.
